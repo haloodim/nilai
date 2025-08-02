@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Penilaian Pembelajaran Baca Al-Quran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        .arabic-font {
+            font-family: 'Amiri', serif;
+        }
+
+        .print-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .report-container {
+            background: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .header-pattern {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        }
+
+        .grade-circle {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .section-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-player {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            height: 6px;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        @media print {
+            .print-page {
+                background: white !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="print-page font-sans">
+    <div class="min-h-screen py-8 px-4">
+        <div class="max-w-4xl mx-auto report-container rounded-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="header-pattern text-white p-8 relative z-10">
+                <div class="text-center">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 mx-auto text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
+                            <path
+                                d="M12 6.5c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"
+                                fill="white" opacity="0.8" />
+                        </svg>
+                    </div>
+                    <h1 class="text-3xl font-bold mb-2">LAPORAN PENILAIAN</h1>
+                    <h2 class="text-xl arabic-font mb-4">تقرير تقييم تعلم قراءة القرآن</h2>
+                    <p class="text-blue-100 text-lg">Pembelajaran Baca Al-Quran</p>
+                </div>
+            </div>
+
+            <!-- Student Info -->
+            <div class="p-8 bg-gray-50 border-b">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Informasi Siswa</h3>
+                        <div class="space-y-3">
+                            <div class="flex">
+                                <span class="w-24 text-gray-600">Nama</span>
+                                <span class="font-medium">: M. Ghozy</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-24 text-gray-600">Kelas</span>
+                                <span class="font-medium">: Tashih Tilawah Quran</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Detail Penilaian</h3>
+                        <div class="space-y-3">
+                            <div class="flex">
+                                <span class="w-24 text-gray-600">Tanggal</span>
+                                <span class="font-medium">: 01 Agustus 2025</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-24 text-gray-600">Penguji</span>
+                                <span class="font-medium">: Dimas Prassetya</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-24 text-gray-600">Penilaian</span>
+                                <span class="font-medium">: Caturwulan 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audio Section -->
+            <div class="p-8 border-b bg-white">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <svg class="w-6 h-6 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+                    </svg>
+                    Rekaman Audio Bacaan
+                </h3>
+
+                <!-- Tab Menu -->
+                <div class="flex space-x-4 border-b mb-6">
+                    <button class="tab-button px-4 py-2 text-blue-600 border-b-2 border-blue-600"
+                        data-tab="al-fatihah">Ujian Faturahman</button>
+                        <!-- Tab Menu 
+                    <button class="tab-button px-4 py-2 text-gray-600 hover:text-blue-600"
+                        data-tab="an-naas">An-Naas</button>
+                    <button class="tab-button px-4 py-2 text-gray-600 hover:text-blue-600"
+                        data-tab="al-ikhlas">Al-Ikhlas</button>
+                        -->
+                </div>
+
+                <!-- Tab Content -->
+                <div id="tab-al-fatihah" class="tab-content">
+                    <!-- Player 1 -->
+                    <div class="audio-player p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-4">
+                                <button id="playBtn"
+                                    class="w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors">
+                                    <svg id="playIcon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                    <svg id="pauseIcon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                                    </svg>
+                                </button>
+                                <div>
+                                    <p class="font-medium text-gray-800">Ujian Faturahman - Ghozy</p>
+                                    <p class="text-sm text-gray-600">Durasi: <span id="duration">0:00</span></p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-600">Waktu: <span id="currentTime">0:00</span></p>
+                            </div>
+                        </div>
+
+                        <div class="w-full bg-gray-300 rounded-full h-2 mb-4">
+                            <div id="progressBar" class="progress-bar w-0"></div>
+                        </div>
+
+                        <audio id="audioPlayer" src="audio/Ujian Faturahman.mp3"></audio>
+
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-yellow-600 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                </svg>
+                                <p class="text-sm text-yellow-800">
+                                    <strong>Catatan:</strong> -
+                    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Assessment Sections -->
+                <div class="p-8">
+                    <div class="grid gap-6">
+                        <!-- Huruf + Sifat -->
+                        <div class="section-card bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-blue-600 font-bold text-sm">1</span>
+                                </div>
+                                Penilaian Huruf + Sifat
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-medium text-gray-700 mb-3">Makharijul Huruf</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Jayyid (79)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700 mb-3">Sifatul Huruf</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Jayyid (75)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                                <p class="text-sm text-blue-800"><strong>Catatan:</strong> Perbanyak latihan di huruf tebal, dan beberapa huruf tenggorokan seperti 'ain, dan ha kecil.</p>
+                            </div>
+                        </div>
+
+                        <!-- Ahkam Tajwid -->
+                        <div class="section-card bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-blue-600 font-bold text-sm">2</span>
+                                </div>
+                                Ahkam Tajwid
+                            </h3>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div>
+                                    <h4 class="font-medium text-gray-700 mb-3">Nun Sukun & Tanwin</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span
+                                                class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Jayyid Jiddan(80)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700 mb-3">Mim Sukun</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span
+                                                class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Jayyid Jiddan(80)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700 mb-3">Lainnya</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600 text-sm">Mad</span>
+                                            <span
+                                                class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Jayyid(78)</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600 text-sm">Qalqalah</span>
+                                            <span
+                                                class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">Jayyid(75)</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600 text-sm">Waqaf</span>
+                                            <span
+                                                class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs">Cukup(68)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 bg-green-50 rounded-lg">
+                                <p class="text-sm text-green-800"><strong>Catatan:</strong> Penguasaan tajwid sudah
+                                    baik, tinggal konsisten di tahanan tahanan. Banyakin latihan dan mendengar murratall.</p>
+                            </div>
+                        </div>
+
+                        <!-- Harakat -->
+                        <div class="section-card bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-blue-600 font-bold text-sm">3</span>
+                                </div>
+                                Harakat
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-medium text-gray-700 mb-3">Vocal</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600 flex items-center">
+                                                <span class="arabic-font text-lg mr-2">فَتْحَة</span>
+                                                Fathah
+                                            </span>
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Jayyid(75)</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600 flex items-center">
+                                                <span class="arabic-font text-lg mr-2">كَسْرَة</span>
+                                                Kasrah
+                                            </span>
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Jayyid(75)</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600 flex items-center">
+                                                <span class="arabic-font text-lg mr-2">ضَمَّة</span>
+                                                Dhammah
+                                            </span>
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Jayyid(70)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 bg-yellow-50 rounded-lg">
+                                <p class="text-sm text-yellow-800"><strong>Catatan:</strong> Terkhusus pada harakat fathah, suara kadang berubah menjadi tebal dihuruf tipis. Latih terus bukaan mulutnya, supaya suara yang keluar tetap tipis saat harakat fathah.</p>
+                            </div>
+                        </div>
+
+                        <!-- Kelancaran -->
+                        <div class="section-card bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-blue-600 font-bold text-sm">4</span>
+                                </div>
+                                Kelancaran
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-medium text-gray-700 mb-3">Aspek Kelancaran</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Kecepatan Baca</span>
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Jayyid Jiddan(81)</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Konsistensi Tempo</span>
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Jayyid(78)</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Jeda Antar Ayat</span>
+                                            <span
+                                                class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">Jayyid(75)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700 mb-3">Kesalahan</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Tersendat</span>
+                                            <span class="text-sm text-gray-500">8 kali</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Pengulangan</span>
+                                            <span class="text-sm text-gray-500">12 kali</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Koreksi Diri</span>
+                                            <span class="text-sm text-gray-500">8 kali</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                                <p class="text-sm text-blue-800"><strong>Catatan:</strong> Kelancaran cukup baik, perlu
+                                    latihan untuk mengurangi tersendat dan memperbaiki jeda antar ayat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overall Grade -->
+                <div class="p-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-t">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Nilai Keseluruhan</h3>
+                        <div class="flex justify-center items-center space-x-8">
+                            <div class="grade-circle w-24 h-24 rounded-full flex items-center justify-center">
+                                <span class="text-3xl font-bold text-white">B</span>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-lg font-semibold text-gray-800">Baik</p>
+                                <p class="text-gray-600">Skor: 76.05/100</p>
+                                <p class="text-sm text-gray-500 mt-2">Kategori: Jayyid (Mampu membaca dengan baik)</p>
+                                <p class="text-sm text-gray-500 mt-2">Note : 100 - >= 95 : Mumtaz (A), 94 - >= 80 Jayyid Jiddan (B+), 79 - >= 70 Jayyid (B), 69 - >= 60 Maqbul (C), >60 I'aadah (D)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="p-8 bg-white border-t">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Rekomendasi Pembelajaran</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <h4 class="font-medium text-green-800 mb-2 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Kelebihan
+                            </h4>
+                            <ul class="text-sm text-green-700 space-y-1">
+                                <li>• Makharijul huruf dan sifat sudah baik, tinggal mau terus berlatih</li>
+                                <li>• Penguasaan harakat cukup baik</li>
+                                <li>• Konsistensi tempo bacaan baik</li>
+                            </ul>
+                        </div>
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                            <h4 class="font-medium text-orange-800 mb-2 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                </svg>
+                                Perlu Perbaikan
+                            </h4>
+                            <ul class="text-sm text-orange-700 space-y-1">
+                                <li>• Perbanyak interaksi dengan Al-Quran</li>
+                                <li>• Perbaikan di bab dialek, perbanyak dengar murratall syaikh timur tengah.</li>
+                                <li>• Konsistenkan tahanan-tahanan pada tajwid (contoh, ghunnah, ikhfa, dsb)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="p-6 bg-gray-100 text-center border-t">
+                    <div class="flex justify-between items-center">
+                        <div class="text-left">
+                            <p class="text-sm text-gray-600">Tanggal Cetak: 01 Agustus 2025</p>
+                            <p class="text-xs text-gray-500">Sistem Penilaian Baca Al-Quran v1.0.55</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-medium text-gray-800">Penguji</p>
+                            <div class="mt-8 border-t border-gray-400 pt-1">
+                                <p class="text-sm text-gray-600">Dimas Prassetya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            // Audio player functionality (demo)
+            const audio = document.getElementById('audioPlayer');
+            const durationDisplay = document.getElementById('duration');
+
+            audio.addEventListener('loadedmetadata', function () {
+                const duration = audio.duration;
+                const minutes = Math.floor(duration / 60);
+                const seconds = Math.floor(duration % 60);
+                durationDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            });
+            const playBtn = document.getElementById('playBtn');
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeDisplay = document.getElementById('currentTime');
+
+            playBtn.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play();
+                    playIcon.classList.add('hidden');
+                    pauseIcon.classList.remove('hidden');
+                    playBtn.classList.add('bg-blue-700');
+                } else {
+                    audio.pause();
+                    playIcon.classList.remove('hidden');
+                    pauseIcon.classList.add('hidden');
+                    playBtn.classList.remove('bg-blue-700');
+                }
+            });
+
+            audio.addEventListener('timeupdate', function () {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = progressPercent + '%';
+
+                const minutes = Math.floor(audio.currentTime / 60);
+                const seconds = Math.floor(audio.currentTime % 60);
+                currentTimeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            });
+
+            audio.addEventListener('ended', function () {
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                playBtn.classList.remove('bg-blue-700');
+                progressBar.style.width = '0%';
+                currentTimeDisplay.textContent = '0:00';
+            });
+
+            // Print functionality
+            function printReport() {
+                window.print();
+            }
+
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const tab = button.dataset.tab;
+
+    // Reset semua tab
+    tabButtons.forEach(btn => {
+      btn.classList.remove('text-blue-600', 'border-blue-600');
+      btn.classList.add('text-gray-600');
+    });
+    tabContents.forEach(content => content.classList.add('hidden'));
+
+    // Aktifkan tab saat ini
+    button.classList.add('text-blue-600', 'border-blue-600');
+    document.getElementById(`tab-${tab}`).classList.remove('hidden');
+
+    // Pause semua audio lain
+    document.querySelectorAll('audio').forEach(a => a.pause());
+  });
+});
+
+
+        </script>
+        <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'968d994ab17d445e',t:'MTc1NDEzNzk1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
